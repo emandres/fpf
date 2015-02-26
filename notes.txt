@@ -1,0 +1,47 @@
+immutability:
+  once a variable is set, it is never changed
+  its value may be altered and assigned to another variable
+  why:
+    "pure" functions -> f(x) always returns the same value
+    makes reasoning about programs simpler
+    implications in concurrency
+      many bugs encountered in concurrent code arise from shared state between threads
+      no mutable shared state => no stomping others' data
+  how:
+    copy on write
+    "persistent" data structures (not persistent in the RDMBS sense)
+  objections:
+    performance
+      copy on write is not ideal for restricted or performant systems (e.g. limited memory, tight loops, etc.)
+    language support
+      many languages lack support for immutable types
+  persistent data structures:
+    data structures designed to be easy to "modify" be changing one node and pointing to the rest of the existing structure
+
+recursion:
+  s/iteration/recursion
+  lists (cons aka linked list)
+  evaluation example (basic lisp interpreter using recursive evaluation)
+  tree traversal
+  tail recursion optimization
+
+higher order functions:
+  higher order functions take a function as a one of its parameters
+  recursive loops tend to become repetitive
+  many types of operations fall into a few basic operations
+  higher order functions are powerful because you can modify the behavior that they perform, while keeping the same skeleton functionality
+  reduce (aka fold, collect, aggregate): takes a list and perform an operation on items of the list, accumulating result
+    (a -> b -> a) -> a -> [b] -> a
+    i.e. sum
+  filter: take a list and return a new list only containing the items that satisfy a predicate (a -> Bool) -> [a] -> [a]
+  map: take a list and apply a function to each item, creating a new list (a -> b) -> [a] -> [b]
+  most (all?) higher order functions can be derived from reduce (not necessarily implemented that way)
+  real world examples:
+    SQL
+    LINQ
+    Java streams
+  other hof's:
+    group{_by}
+    partition{_by}
+
+
